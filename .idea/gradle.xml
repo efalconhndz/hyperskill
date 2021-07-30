@@ -8,6 +8,8 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/7.1.1/libexec" />
+        <option name="gradleJvm" value="#JAVA_INTERNAL" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -16,6 +18,8 @@
             <option value="$PROJECT_DIR$/Topics/Array/Initializing an array of integers" />
             <option value="$PROJECT_DIR$/Topics/Array/Initializing an array of longs" />
             <option value="$PROJECT_DIR$/Topics/Array/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Branching statements/The (un)-ordered sequence" />
+            <option value="$PROJECT_DIR$/Topics/Branching statements/Theory" />
             <option value="$PROJECT_DIR$/Topics/Calling a method (1)/Area of parallelogram" />
             <option value="$PROJECT_DIR$/Topics/Calling a method (1)/Theory" />
             <option value="$PROJECT_DIR$/Topics/Calling a method/Area of parallelogram" />
@@ -29,6 +33,7 @@
             <option value="$PROJECT_DIR$/Topics/Conditional statement/Chocolate" />
             <option value="$PROJECT_DIR$/Topics/Conditional statement/Interval" />
             <option value="$PROJECT_DIR$/Topics/Conditional statement/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Conditional statement/Triangle" />
             <option value="$PROJECT_DIR$/Topics/Errors in programs/Fix the program" />
             <option value="$PROJECT_DIR$/Topics/Errors in programs/Theory" />
             <option value="$PROJECT_DIR$/Topics/Integer types and operations/Snail" />
@@ -61,6 +66,10 @@
             <option value="$PROJECT_DIR$/Topics/String/Extracting a substring" />
             <option value="$PROJECT_DIR$/Topics/String/Replacing 'a' with 'b'" />
             <option value="$PROJECT_DIR$/Topics/String/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Switch statement/A simple calculator" />
+            <option value="$PROJECT_DIR$/Topics/Switch statement/Direction" />
+            <option value="$PROJECT_DIR$/Topics/Switch statement/Floor-space of the room" />
+            <option value="$PROJECT_DIR$/Topics/Switch statement/Theory" />
             <option value="$PROJECT_DIR$/Topics/The for-loop/Grades" />
             <option value="$PROJECT_DIR$/Topics/The for-loop/Maximum element divisible by four" />
             <option value="$PROJECT_DIR$/Topics/The for-loop/Size of parts" />

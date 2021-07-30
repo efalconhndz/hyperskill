@@ -1,142 +1,163 @@
 package tictactoe;
-import java.util.Scanner;  // Import the Scanner class
+import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args) {
 
-    private static void printBoard(char[][] board) {
+        Scanner scanner = new Scanner(System.in);
+        String player = "X";
 
+        String[][] board = new String[3][3];
+
+        boardSetUp(board);
+
+        playGame(scanner, player, board);
+    }
+
+    private static void printBoard(String[][] board) {
         System.out.println("---------");
         System.out.println("| " + board[0][0] + " " + board[0][1] + " " + board[0][2] + " |");
         System.out.println("| " + board[1][0] + " " + board[1][1] + " " + board[1][2] + " |");
         System.out.println("| " + board[2][0] + " " + board[2][1] + " " + board[2][2] + " |");
         System.out.println("---------");
-
     }
 
-    public static void main(String[] args) {
+    private static String checkWinner(String[][] board) {
 
-        char[][] board = new char[3][3];
-        char player = 'X';
+        Boolean found = false;
+        String line = null;
 
-        for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    board[i][j] = ' ';
-                }
+        for (int a = 0; a < 8; a++) {
+
+            switch (a) {
+                case 0:
+                    line = board[0][0] + board[0][1] + board[0][2];
+                    break;
+                case 1:
+                    line = board[1][0] + board[1][1] + board[1][2];
+                    break;
+                case 2:
+                    line = board[2][0] + board[2][1] + board[2][2];
+                    break;
+                case 3:
+                    line = board[0][0] + board[1][0] + board[2][0];
+                    break;
+                case 4:
+                    line = board[0][1] + board[1][1] + board[2][1];
+                    break;
+                case 5:
+                    line = board[0][2] + board[1][2] + board[2][2];
+                    break;
+                case 6:
+                    line = board[0][0] + board[1][1] + board[2][2];
+                    break;
+                case 7:
+                    line = board[0][2] + board[1][1] + board[2][0];
+                    break;
             }
 
-        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-
-        System.out.print("Enter Cells: ");
-        String userInput = scanner.nextLine();  // Read user input
-        char[] userInputChars = userInput.toCharArray();
-        int position = 0;
-
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-
-                if ( userInputChars[position] == '_') {
-                    userInputChars[position] = ' ';
-                }
-
-                board[i][j] = userInputChars[position];
-                position++;
+            if (line.equals("XXX")) {
+                return "X";
+            } else if (line.equals("OOO")) {
+                return "O";
             }
         }
 
-        printBoard(board);
-
-//        char winner = '\0';
-//        int row = 0;
-//
-//        if (board[0][0] == board[0][1] && board[0][1] == board[0][2]) {
-//            winner = board[0][0];
-//            row = row + 1;
-//        }
-//        if (board[1][0] == board[1][1] && board[1][1] == board[1][2]) {
-//            winner = board[1][0];
-//            row = row + 1;
-//        }
-//        if (board[2][0] == board[2][1] && board[2][1] == board[2][2]) {
-//            winner = board[2][0];
-//            row = row + 1;
-//        }
-//        if (board[0][0] == board[1][0] && board[1][0] == board[2][0]) {
-//            winner = board[0][0];
-//            row = row + 1;
-//        }
-//        if (board[0][1] == board[1][1] && board[1][1] == board[2][1]) {
-//            winner = board[0][1];
-//            row = row + 1;
-//        }
-//        if (board[0][2] == board[1][2] && board[1][2] == board[2][2]) {
-//            winner = board[0][2];
-//            row = row + 1;
-//        }
-//        if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
-//            winner = board[0][0];
-//            row = row + 1;
-//        }
-//        if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
-//            winner = board[0][2];
-//            row = row + 1;
-//        }
-//
-//        int countX = 0;
-//        int countO = 0;
-//
-//        for (int x = 0; x < 3; x++) {
-//            for (int y = 0; y < 3; y++) {
-//
-//                if ( board[x][y] == 'X' ) {
-//                    countX++;
-//                } else if ( board[x][y] == 'O') {
-//                    countO++;
-//                }
-//            }
-//        }
-
-//        int number = 0;
-//
-//        do {
-            System.out.println("Enter the coordinates: ");
-            int row = 0;
-            int col = 0;
-            if (scanner.hasNextInt()) {
-                row = scanner.nextInt() - 1;
-                col = scanner.nextInt() - 1;
-            } else {
-                System.out.println("You should enter numbers!");
+        out:
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j].equals(" ")) {
+                    found = true;
+                    break out;
+                }
             }
+        }
 
-            if (board[row][col] != ' ') {
-                System.out.println("This cell is occupied! Choose another one!");
+        if (found) {
+            return "null";
+        } else {
+            return "draw";
+        }
+    }
+
+    private static void boardSetUp(String[][] board) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = " ";
             }
+        }
+    }
 
-        printBoard(board);
+    private static void playGame(Scanner scanner, String player, String[][] board) {
+        int[] play = new int[2];
+        int accepted = 0;
+        String result;
 
+        first:
+        while (true) {
 
-//            while (!scanner.hasNextInt()) {
-//                System.out.println("You should enter numbers!");
-//                scanner.next(); // this is important!
-//            }
+            printBoard(board);
 
-//            for (int i = 0; i < 2; i++) {
-//                nums[i] = scanner.nextInt();
-//            }
-//        } while (number < 0 && number > 9);
+            do {
+                System.out.println("Enter the coordinates:");
 
+                if (!scanner.hasNextInt()) {
 
+                    System.out.println("You should enter numbers!");
+                    scanner.nextLine();
 
+                } else {
 
-//        if (row >= 2 || (countX - countO) >= 2L || (countO - countX) >= 2L) {
-//            System.out.println("Impossible");
-//        } else if (row == 0 && new String(userInputChars).contains("_")) {
-//            System.out.println("Game not finished");
-//        } else if (row == 0 || row == 2) {
-//            System.out.println("Draw");
-//        } else {
-//            System.out.println(winner + " wins");
-//        }
+                    for (int i = 0; i < 2; i++) {
+                        play[i] = scanner.nextInt();
+                    }
+
+                    if (!(play[0] >= 1 && play[0] <= 3 && play[1] >= 1 && play[1] <= 3)) {
+
+                        System.out.println("Coordinates should be from 1 to 3!");
+
+                    } else {
+
+                        if (!(board[play[0] - 1][play[1] - 1].equals(" "))) {
+
+                            System.out.println("This cell is occupied! Choose another one!");
+
+                        } else {
+
+                            board[play[0] - 1][play[1] - 1] = player;
+                            accepted = 1;
+
+                            if (player.equals("X")) {
+                                player = "O";
+                            } else {
+                                player = "X";
+                            }
+                        }
+                    }
+                }
+            } while (accepted != 1);
+
+            result = checkWinner(board);
+
+            switch (result) {
+                case "X":
+                    printBoard(board);
+                    System.out.println("X wins");
+                    break first;
+
+                case "O":
+                    printBoard(board);
+                    System.out.println("O wins");
+                    break first;
+
+                case "draw":
+                    printBoard(board);
+                    System.out.println("Draw");
+                    break first;
+
+                case "null":
+                    break ;
+            }
+        }
     }
 }
